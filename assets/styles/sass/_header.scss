@@ -1,0 +1,126 @@
+header{
+    @include couleur(var(--c_clair),var(--c_theme));
+    box-shadow: 0 0 10px var(--c_sombre_moyen);
+    height:150px;
+    padding:1em;
+    position:fixed;
+    top:0;
+    transition:.2s;
+    width:100%;
+    z-index:2;
+
+    /* positionnement interne   */
+    display:grid;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-areas: "t_hd t_hd t_hd panier";
+
+    h1{
+        @include flexbox(flex,column,center,flex-start);
+        a{
+            color:inherit;
+            font-family: var(--f_titre);
+            font-weight: 900;
+            font-size : 1em;
+            grid-area: t_hd;
+            letter-spacing: -.04em;
+            text-decoration: none;
+            transition: color 1s cubic-bezier(0, 0, 0.01, 0.75);
+            &:hover{
+                color:hsla(148, 25%, 75%, 1);
+            }
+        }
+    }
+
+    svg{
+        .st0{fill:hsl(352, 50%, 73%);}
+        .st1{fill:hsl(355, 37%, 69%);}
+        .st2{fill:hsl(352, 31%, 58%);}
+        .st3{fill:hsl(0, 0%, 30%);}
+    }
+    
+    
+    .panier_actif{
+        .st0{fill:#EA3D53;}
+        .st1{fill:#D83945;}
+        .st2{fill:#B12B3D;}
+        .st3{fill:#333333;}
+        }
+}
+
+.header_fin{
+    height: 100px;
+    padding:.5em;
+    h1{
+        font-size:1.5em;
+        margin:0;
+    }
+    .panier{
+
+        &:panier{
+            height: 40px;
+        }
+        &>div{
+            justify-content: flex-start;
+            height: 40px;
+        }
+        // img{
+        //     z-index: 0;
+        //     //height: 40px;
+        // }
+    }
+
+}
+
+.panier{
+    @include flexbox(flex,column,center,center);
+    grid-area: panier;
+    
+    div{
+        @include flexbox(flex,column,center,center);
+        position:relative;
+        height: 60px;
+        width: 60px;
+        div{
+            @include flexbox(flex,column,center,center); // centrage du texte
+            @include couleur(var(--c_theme),var(--c_clair));
+            border-radius: 50%;    
+            position: absolute;
+            left: 62%; top: 21%;
+            font-family: var(--f_titre);
+            font-size: .7em;
+            font-weight: 600;
+            height:20px;
+            text-align: center;
+            width:20px;
+            z-index: 2;
+    
+            &.disparait{
+                display: none;
+            }
+        }
+        // img{
+        //     height:50px;
+        // }
+
+    }
+
+}
+
+
+
+@media screen and (min-width: 576px){
+    header h1{
+        font-size: 3em;
+        margin: .3em 0;
+    }
+}
+
+@media screen and (min-width: 992px){
+    header{
+        grid-template-areas: "t_hd t_hd t_hd t_hd t_hd panier";
+        h1{
+            font-size: 3em;
+            margin: .3em 0;
+        }
+    } 
+}

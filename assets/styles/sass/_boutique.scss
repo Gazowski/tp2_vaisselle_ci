@@ -1,0 +1,129 @@
+.liste_produits{
+
+    display:grid;
+    grid-area: boutique;
+    grid-template-columns: 1fr;
+    grid-gap: .1em;
+}
+
+.tuile{
+    @include couleur(var(--c_clair),var(--c_sombre));
+    //border:1px solid var(--c_sombre_moyen);
+    display:grid;
+
+    .prix{
+        color:var(--c_theme);
+        padding:.2em 0;
+    }
+}
+
+.tuile-boutique{
+    cursor:pointer ;
+    grid-template-columns: repeat(2 , 50%);
+    img{
+        width: calc(100%);
+        object-fit: contain;
+    }
+    div{
+        display:grid;
+        background:white;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        padding:.5em;
+
+        //font-size: .8em;
+    }
+}
+
+.cote_droit{
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(50vw - .5em);
+    overflow: hidden;
+    img{
+        object-fit: cover;
+        transform: translateY(-25%);
+        filter: brightness(.75) blur(1px);
+    }
+    button{
+        @include centrer;
+    }
+}
+
+/*  effet hover */
+    .conteneur_cube{
+        perspective: 800px;
+        perspective-origin: center;
+
+        .cube{
+            transform-style: preserve-3d;
+            transform-origin:center;
+            position:relative;
+            transition: all 1s ease-out;
+            &:hover{
+                transform-origin:left;
+                transform:rotatey(-90deg) translatex(-100%);
+            }
+
+            .face{
+                button{
+                    visibility: hidden;
+                }
+            }
+
+            .cote_droit{
+                position:absolute;
+                left:calc(100% - .5em);
+                width:calc(100%);
+                transform-origin:left;
+                transform:translateY(-100%) rotatey(90deg);
+            }
+        }
+    }
+
+@media screen and (min-width: 576px){
+    .liste_produits{
+        width:100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(4, auto);
+        h3{
+            font-size:1.25em;
+        }
+    }
+
+    .tuile-boutique{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr .5fr;
+        div{
+            grid-template-rows: 4.5em 2.4em 1.5em;
+        }    
+    }
+
+    .cote_droit{
+        grid-template-rows: calc((100vw / 3) + 9em);
+        img{
+            transform: translateY(0%);
+            object-fit: cover;
+            width: initial;
+            height: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 992px){
+    .liste_produits{
+        grid-template-columns: repeat(6,1fr);
+        grid-template-rows: repeat(2, auto);
+    }
+
+    .tuile-boutique{
+        grid-template-rows: 1fr .5fr;
+        
+        div,img{
+            width: calc(100% - .2em);
+        }
+    }
+
+    .cote_droit{
+        grid-template-rows: calc((100vw / 6) + 9em);
+    }
+}

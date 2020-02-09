@@ -1,0 +1,46 @@
+/* variables et mixin */
+
+body {
+    //couleurs
+    --c_sombre : hsla(157, 100%, 4%, 1);
+    --c_sombre_transparent :  hsla(157, 100%, 4%, .5);
+    --c_sombre_moyen:hsla(172, 29%, 29%, 1);
+    --c_clair : hsla(228, 48%, 94%, 1);
+    --c_theme: hsla(148, 99%, 25%, 1);
+    --c_theme_clair : hsla(103, 95%, 67%, 1);
+    --c_erreur:#ec0b43;
+
+    //fontes
+    --f_titre : 'Montserrat', sans-serif;
+    --f_texte : 'Raleway', sans-serif;
+
+    // tailles écran
+    // --ecran_moyen : 576px;
+    // --ecran_grand : 992px;
+}
+
+/* les variables ne peuvent pas être utilisées en tant que selecteur (ou tout ce qui est à l'extérieur des accolades) 
+    voir https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries/40723269    */
+$ecran_moyen : 576px;
+$ecran_grand : 992px;
+
+/* mixin */
+
+@mixin flexbox($display, $direction, $justify, $align) {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin couleur($couleurBackground, $couleurTexte) {
+    background-color: $couleurBackground;
+    color: $couleurTexte;
+}
+
+@mixin centrer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

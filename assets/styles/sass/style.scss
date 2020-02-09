@@ -1,0 +1,73 @@
+/**
+* Javascript TP2
+* feuille de style principale
+*/
+
+@import "_mixin_variables.scss";
+@import "fontawesome/fontawesome.scss";
+@import "fontawesome/solid.scss";
+@import "fontawesome/regular.scss";
+@import "fontawesome/brands.scss";
+@import "_titre_section.scss";
+@import "_filtre.scss";
+@import "_bouton.scss";
+@import "_header.scss";
+@import "_boutique.scss";
+@import "_panier.scss";
+@import "_formulaire.scss";
+@import "_fenetre.scss";
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+html,body{
+    overflow-x: hidden;
+}
+
+body{
+    font-family: var(--f_texte);
+    //max-width: 100%;
+    position: relative;
+    width:100vw;
+
+    @include couleur(var(--c_clair),var(--c_sombre));
+}
+
+footer{
+    @include couleur(var(--c_sombre_moyen),var(--c_clair));
+    padding:5em;
+    text-align: center;
+}
+
+
+
+/* Classe */
+
+.wrapper-page{
+    /*  positionnement relatif par rapport au header   */
+    position: relative;
+    top:150px;
+    width:100%;
+}
+
+
+.inventaire_nul{
+    pointer-events: none;
+    opacity: .5;
+}
+
+.disparait{
+    display: none;
+}
+
+
+
+
+

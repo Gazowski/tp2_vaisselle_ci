@@ -1,0 +1,60 @@
+button, .bouton, .bouton-submit{
+    @include couleur(var(--c_theme),var(--c_clair));
+    border: none;
+    border-radius: 3px;
+    border:solid 1px var(--c_theme);
+    font-family: var(--f_titre);
+    font-size: .6em;
+    font-weight: 600;
+    padding: 0.8em;
+    transition: all .3s ease-out;
+    &:disabled{
+        opacity:.5;
+        pointer-events: none;
+    }
+    &:hover{
+        @include couleur(var(--c_clair),var(--c_theme));
+        border:solid 1px var(--c_theme);
+    }
+    
+}
+
+.btn-icon{
+    font-size: 1.3em;
+    padding: .75em 3em;
+    border-radius: 0;
+    background: var(--c_sombre_transparent);
+    border:solid 1px var(--c_sombre_transparent);
+}
+
+.btn-navigation{
+    @include flexbox(flex,row,center,center);
+    padding:3em 33vw;
+}
+
+.btn-close{
+    @include couleur(inherit,inherit);
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    font-size: 1.75em;
+    padding: initial;
+    transform-origin: center;
+    transition:.5s;
+    &:hover{
+        border: none;
+        color: var(--c_sombre_transparent);
+        transform: rotate(.5turn);
+    }
+}
+
+.bouton-submit{
+    font-size:initial;
+    padding:1em;
+    width:100%;
+}
+
+.bouton{
+    text-decoration: none;
+}
+
